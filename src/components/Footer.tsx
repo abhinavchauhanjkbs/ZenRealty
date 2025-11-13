@@ -81,8 +81,8 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="mt-24 border-t border-white/10 pt-8 text-center text-white/60 tracking-wide text-sm pb-2">
-  <p className="opacity-80">{footer.copyright}</p>
+            <div className="mt-24 border-t border-white/10 pt-8 text-center text-white/60 tracking-wide text-base pb-2">
+          <p className="opacity-90">{footer.copyright}</p>
           </div>
         </div>
       </div>

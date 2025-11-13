@@ -212,7 +212,7 @@ export const siteData = {
     ],
     legalLinks: [
       { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms & Conditions", href: "#terms" },
+      { label: "Terms\u00A0&\u00A0Conditions", href: "#terms" },
       { label: "Disclaimer", href: "#disclaimer" }
     ],
     social: [
