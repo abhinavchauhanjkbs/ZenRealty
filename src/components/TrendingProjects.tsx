@@ -67,6 +67,7 @@ const TrendingProjects = () => {
         className="absolute inset-0 bg-center bg-contain bg-no-repeat pointer-events-none"
         style={{
           backgroundImage: `url(${monumentsImage})`,
+          backgroundAttachment: "scroll",
         }}
       />
       <div className="container mx-auto px-4 relative z-10">
