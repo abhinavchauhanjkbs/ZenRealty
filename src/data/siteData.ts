@@ -179,7 +179,7 @@ export const siteData = {
   propertyTypes: {
     title: "Property",
     titleHighlight: " Type",
-    description: "Discover luxury properties across Singapore, Dubai, USA, and India with unmatched investment opportunities and premium living.",
+    description: "Discover luxury properties across India, Singapore, Dubai, and USA with unmatched investment opportunities and premium living.",
     types: [
       {
         id: 1,
