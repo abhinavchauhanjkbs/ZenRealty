@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -62,14 +63,23 @@ const Navbar = () => {
         </div>
 
         {/* CTA */}
-        <a
-          href="#contact"
-          onClick={(e) => handleScroll(e, "#contact", "Contact Us")}
-          className="hidden md:block bg-primary-foreground text-foreground px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-foreground/90 transition-colors"
-          style={{ cursor: "not-allowed", opacity: 0.7 }}
-        >
-          Contact Us
-        </a>
+        <div className="hidden md:flex items-center gap-4">
+          <Link
+            to="/admin"
+            className="text-sm text-white/90 hover:text-white transition-colors font-light"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
+            Admin Dashboard
+          </Link>
+          <a
+            href="#contact"
+            onClick={(e) => handleScroll(e, "#contact", "Contact Us")}
+            className="hidden md:block bg-primary-foreground text-foreground px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-foreground/90 transition-colors"
+            style={{ cursor: "not-allowed", opacity: 0.7 }}
+          >
+            Contact Us
+          </a>
+        </div>
 
         {/* Mobile Toggle */}
         <button
@@ -100,6 +110,13 @@ const Navbar = () => {
             </a>
           ))}
 
+          <Link
+            to="/admin"
+            className="text-white/90 hover:text-white text-sm py-2 font-light"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
+            Admin Dashboard
+          </Link>
           <a
             href="#contact"
             onClick={(e) => handleScroll(e, "#contact", "Contact Us")}

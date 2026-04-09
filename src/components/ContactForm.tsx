@@ -1,15 +1,38 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { ContactSubmission, storeSubmission } from "@/lib/utils";
 
 const ContactForm = () => {
   const [agreed, setAgreed] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [agreementError, setAgreementError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+
+    if (!agreed) {
+      setAgreementError("Please accept the privacy policy before submitting.");
+      return;
+    }
 
     const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const submission: ContactSubmission = {
+      id: typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}`,
+      createdAt: new Date().toISOString(),
+      fullName: (formData.get("fullName") as string) || "",
+      email: (formData.get("email") as string) || "",
+      phone: (formData.get("phone") as string) || "",
+      propertyType: (formData.get("propertyType") as string) || "",
+      budgetRange: (formData.get("budgetRange") as string) || "",
+      purpose: (formData.get("purpose") as string) || "",
+      message: (formData.get("message") as string) || "",
+    };
+
+    storeSubmission(submission);
+    setAgreementError("");
+    setIsSubmitted(true);
     form.reset();
     setAgreed(false);
 
@@ -106,10 +129,13 @@ const ContactForm = () => {
               By submitting this form, I agree to the terms and privacy policy.
             </label>
 
+            {agreementError ? <p className="text-sm font-medium text-red-600">{agreementError}</p> : null}
+
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-primary text-primary-foreground py-3.5 rounded-full text-sm font-semibold border-2 border-transparent hover:bg-primary/90 active:bg-primary/80 transition-colors duration-300"
+              disabled={!agreed}
+              className="w-full rounded-full border-2 border-transparent bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-colors duration-300 hover:bg-primary/90 active:bg-primary/80 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-primary"
             >
               Submit
             </button>
